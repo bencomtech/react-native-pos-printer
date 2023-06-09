@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PrinterUtils {
-  public static void reregister(Context activity, BroadcastReceiver receiver, IntentFilter intentFilter) {
+  public static void register(Context activity, BroadcastReceiver receiver, IntentFilter intentFilter) {
     try {
       activity.unregisterReceiver(receiver);
     } catch (Exception e) {

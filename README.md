@@ -1,6 +1,6 @@
 # react-native-pos-printer
 
-react native module for printing receipt on pos printer.
+react native module for printing receipt on pos printer. (only support for android)
 
 ## Installation
 
@@ -11,11 +11,67 @@ npm install react-native-pos-printer
 ## Usage
 
 ```js
-import { multiply } from 'react-native-pos-printer';
+import PosPrinter from 'react-native-pos-printer';
+```
 
-// ...
+### Init Printer
 
-const result = await multiply(3, 7);
+Initializes printer, the return will be Promise<void>
+
+```js
+PosPrinter.init(isDebug?)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+```
+
+### Get Devices
+
+Get all printer devices, the return will be Promise<Printer[]>
+
+```js
+PosPrinter.getDevices()
+  .then((device) => console.log(device))
+  .catch((err) => console.log(err));
+```
+
+### Scan Devices
+
+Scan all devices printer, the return will be Promise<boolean>
+
+```js
+PosPrinter.scanDevices()
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+```
+
+### Stop Scan Devices
+
+Stop scanning all devices printer, the return will be Promise<boolean>
+
+```js
+PosPrinter.stopScanDevices()
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+```
+
+### Connect Device
+
+Connect to specific pos printer, the return will be Promise<any>
+
+```js
+PosPrinter.connectDevice(deviceId, timeout)
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+```
+
+## Print Test Receipt
+
+Test print on pos printer
+
+```js
+PosPrinter.printTestReceipt(storageUrl?)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 ```
 
 ## Contributing

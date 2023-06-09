@@ -68,7 +68,7 @@ public class BluetoothPrintingService extends PrintingService implements IPrinti
     close();
 
     IntentFilter boundFilter = new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-    PrinterUtils.reregister(context, broadcastReceiverForStateChanged, boundFilter);
+    PrinterUtils.register(context, broadcastReceiverForStateChanged, boundFilter);
 
     return deviceForPrinting.createBond();
   }
