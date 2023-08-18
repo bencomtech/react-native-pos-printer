@@ -31,10 +31,14 @@ public class PrinterUtils {
     if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
       int permissionCheck = ContextCompat.checkSelfPermission(activity, "Manifest.permission.ACCESS_FINE_LOCATION");
       permissionCheck += ContextCompat.checkSelfPermission(activity, "Manifest.permission.ACCESS_COARSE_LOCATION");
+      permissionCheck += ContextCompat.checkSelfPermission(activity, "Manifest.permission.BLUETOOTH_SCAN");
+      permissionCheck += ContextCompat.checkSelfPermission(activity, "Manifest.permission.BLUETOOTH_CONNECT");
       if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
         String[] permission = new String[]{
           Manifest.permission.ACCESS_FINE_LOCATION,
-          Manifest.permission.ACCESS_COARSE_LOCATION
+          Manifest.permission.ACCESS_COARSE_LOCATION,
+          Manifest.permission.BLUETOOTH_SCAN,
+          Manifest.permission.BLUETOOTH_CONNECT
         };
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
           activity.requestPermissions(permission, 1001);
